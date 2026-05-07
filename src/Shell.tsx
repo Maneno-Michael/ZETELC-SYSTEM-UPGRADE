@@ -1,51 +1,48 @@
-/**
- * Shell — Mobile-responsive app layout.
- *
- * USAGE (in App.tsx or your router):
- *   <Shell sidebar={<MySidebarContent />}>
- *     <Page>...</Page>
- *   </Shell>
- *
- * The sidebar is hidden on mobile and toggled by the built-in hamburger button.
- * Customize sidebar width, colors, and nav items — but keep this structure.
- */
-import React from 'react'
-import {
-  AppShell,
-  AppShellSidebar,
-  AppShellMain,
-  MobileSidebarTrigger,
-} from '@blinkdotnew/ui'
+import React, { useState } from 'react'
+import { Menu, X } from 'lucide-react'
 
 interface ShellProps {
-  /** Sidebar content — e.g. <Sidebar><SidebarItem .../></Sidebar> */
   sidebar: React.ReactNode
-  /** App name shown in mobile header */
   appName?: string
   children: React.ReactNode
 }
 
 export function Shell({ sidebar, appName = 'App', children }: ShellProps) {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
   return (
-    <AppShell>
-      {/* Sidebar — hidden on mobile, always visible on md+.
-          No explicit width here — AppSidebarShell owns its own width
-          and animates it on collapse/expand. */}
-      <AppShellSidebar className="shrink-0">
+    <div className="flex h-screen overflow-hidden">
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`
+          fixed inset-y-0 left-0 z-50 md:relative md:flex md:shrink-0
+          transition-transform duration-200
+          ${mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+        `}
+      >
         {sidebar}
-      </AppShellSidebar>
+      </div>
 
       {/* Main content */}
-      <AppShellMain>
-        {/* Mobile header — hamburger + app name, only shown below md breakpoint */}
+      <div className="flex flex-col flex-1 min-w-0 overflow-auto">
+        {/* Mobile header */}
         <div className="md:hidden flex items-center gap-3 px-4 h-14 border-b border-border bg-background sticky top-0 z-30">
-          <MobileSidebarTrigger />
+          <button onClick={() => setMobileOpen(v => !v)}>
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
           <span className="font-semibold text-sm">{appName}</span>
         </div>
 
-        {/* Page content */}
         {children}
-      </AppShellMain>
-    </AppShell>
+      </div>
+    </div>
   )
 }

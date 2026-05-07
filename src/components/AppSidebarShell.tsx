@@ -8,15 +8,9 @@
  */
 import { useState, useCallback } from 'react'
 import type { ReactNode } from 'react'
-import {
-  Avatar,
-  AvatarFallback,
-  Button,
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@blinkdotnew/ui'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import {
   LayoutDashboard,
   FileText,
