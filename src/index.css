@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-@import '@blinkdotnew/ui/styles';
 
 @tailwind base;
 @tailwind components;
@@ -34,7 +33,6 @@
   }
 }
 
-/* ZETELC SYSTEMS brand palette — unlayered to override @blinkdotnew/ui themes */
 :root {
   --background: 210 20% 98%;
   --foreground: 215 25% 15%;
@@ -55,42 +53,10 @@
   --border: 215 15% 88%;
   --input: 215 15% 88%;
   --ring: 215 70% 22%;
-
-  --sidebar: 215 70% 18%;
-  --sidebar-foreground: 0 0% 95%;
-  --sidebar-primary: 142 60% 42%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 215 50% 30%;
-  --sidebar-accent-foreground: 0 0% 95%;
-  --sidebar-border: 215 50% 30%;
-  --sidebar-ring: 142 60% 42%;
-
-  --chart-1: 215 70% 22%;
-  --chart-2: 142 60% 35%;
-  --chart-3: 24 95% 53%;
-  --chart-4: 47 96% 53%;
-  --chart-5: 262 52% 47%;
-
-  --font-sans: Inter, sans-serif;
-  --font-serif: Raleway, sans-serif;
-  --font-mono: Space Grotesk, monospace;
-
-  --shadow-sm: 0px 2px 8px hsl(215 70% 22% / 0.08);
-  --shadow: 0px 4px 16px hsl(215 70% 22% / 0.10);
-  --shadow-md: 0px 8px 24px hsl(215 70% 22% / 0.12);
-  --shadow-lg: 0px 16px 40px hsl(215 70% 22% / 0.15);
-  --shadow-xl: 0px 24px 60px hsl(215 70% 22% / 0.20);
-
-  --tracking-normal: -0.01em;
-  --spacing: 0.25rem;
   --radius: 0.5rem;
 }
 
-:root.dark,
-.theme-linear.dark,
-.theme-glass.dark,
-.theme-midnight.dark,
-.theme-minimal.dark {
+.dark {
   --background: 215 40% 10%;
   --foreground: 210 15% 90%;
   --card: 215 35% 14%;
@@ -112,7 +78,6 @@
   --ring: 215 60% 55%;
 }
 
-/* Hero gradient background */
 .hero-gradient {
   background: linear-gradient(135deg, hsl(215 70% 22%) 0%, hsl(215 70% 15%) 50%, hsl(215 60% 10%) 100%);
 }
@@ -121,17 +86,14 @@
   background: linear-gradient(180deg, transparent 0%, hsl(215 70% 22% / 0.85) 100%);
 }
 
-/* Section gradient */
 .section-gradient {
   background: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(215 25% 95%) 100%);
 }
 
-/* Green section */
 .green-gradient {
   background: linear-gradient(135deg, hsl(142 60% 28%) 0%, hsl(142 60% 35%) 100%);
 }
 
-/* Animate-in classes */
 .animate-fade-up {
   animation: fadeUp 0.6s ease-out both;
 }
@@ -141,15 +103,8 @@
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -157,7 +112,6 @@
   to { opacity: 1; }
 }
 
-/* Nav transition */
 .nav-scrolled {
   @apply shadow-md;
   background: hsl(215 70% 22% / 0.97) !important;

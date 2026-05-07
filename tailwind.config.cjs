@@ -1,11 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  content: [
+content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    // Scan @blinkdotnew/ui so its Tailwind classes aren't purged
-    "./node_modules/@blinkdotnew/ui/dist/index.mjs",
   ],
   theme: {
     extend: {
